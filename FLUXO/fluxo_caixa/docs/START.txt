@@ -1,0 +1,213 @@
+╔════════════════════════════════════════════════════════════════════════╗
+║                    FLUXO DE CAIXA - VERSÃO 1.0                         ║
+║           Sistema de Gestão Financeira Desktop em Python               ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+📂 ESTRUTURA DO PROJETO
+════════════════════════════════════════════════════════════════════════
+
+fluxo_caixa/
+│
+├── 📄 DOCUMENTAÇÃO
+│   ├── README.md                 ← COMECE AQUI!
+│   ├── GUIA_RAPIDO.md            ← Uso rápido (2 min)
+│   ├── INSTALACAO.md             ← Passo-a-passo de setup
+│   ├── DOCUMENTACAO.md           ← Arquitetura técnica
+│   ├── EXEMPLOS_USO.py           ← Código de exemplo
+│   └── ENTREGA.md                ← Resumo final
+│
+├── 🔧 CÓDIGO PRINCIPAL
+│   ├── main.py                   ← Aplicação principal
+│   ├── database.py               ← SQLite (CRUD)
+│   └── models.py                 ← Modelo Lancamento
+│
+├── 👁️ VIEWS (Interface Gráfica)
+│   └── views/
+│       ├── tela_lancamentos.py   ← Cadastro + Listagem
+│       ├── tela_relatorios.py    ← Gráficos + Relatórios
+│       └── __init__.py
+│
+├── ⚙️ SERVICES (Lógica)
+│   └── services/
+│       ├── relatorios.py         ← Cálculos financeiros
+│       ├── export_excel.py       ← Exportação Excel/CSV
+│       └── __init__.py
+│
+├── 📦 DEPENDÊNCIAS
+│   ├── requirements.txt           ← Instale com pip
+│   └── venv/                      ← Ambiente virtual (criar)
+│
+├── 🗂️ RECURSOS
+│   └── assets/                    ← Ícones, imagens
+│
+├── 🧪 TESTES
+│   └── inserir_dados_teste.py    ← 14 lançamentos para teste
+│
+└── ⚙️ CONFIG
+    └── .gitignore                ← Git ignore
+
+
+🚀 INÍCIO RÁPIDO (3 minutos)
+════════════════════════════════════════════════════════════════════════
+
+Windows:
+  1. cd d:\2026\fluxo_caixa
+  2. python -m venv venv
+  3. venv\Scripts\activate
+  4. pip install -r requirements.txt
+  5. python main.py
+
+macOS/Linux:
+  1. cd ~/fluxo_caixa
+  2. python3 -m venv venv
+  3. source venv/bin/activate
+  4. pip install -r requirements.txt
+  5. python3 main.py
+
+
+✨ FUNCIONALIDADES
+════════════════════════════════════════════════════════════════════════
+
+✅ Cadastro
+   • Adicionar, editar, deletar lançamentos
+   • Validação de campos obrigatórios
+   • Duplo-clique para editar
+
+✅ Classificação
+   • Receitas (Serviço, Produto)
+   • Despesas Variáveis (Insumos, Mão de obra, Fornecimento)
+   • Despesas Fixas (Telefone, Internet, Contador, Energia, Água)
+   • Despesas Pessoais (Escola, Cartão, Lazer)
+
+✅ Filtros
+   • Por período (data inicial/final)
+   • Por tipo (Receita/Despesa)
+   • Por categoria e subcategoria
+
+✅ Relatórios
+   • Total receitas, despesas, saldo
+   • Gráfico por categoria (barras)
+   • Gráfico por subcategoria (horizontal)
+   • Análise de despesas
+   • Tabela detalhada
+
+✅ Exportação
+   • Excel (5 abas)
+   • CSV
+   • Timestamp automático
+
+
+📊 MODELO DE DADOS
+════════════════════════════════════════════════════════════════════════
+
+Tabela: lancamentos
+  • id (INTEGER PK)
+  • data (DATE)
+  • tipo (TEXT) → Receita / Despesa
+  • categoria (TEXT) → Receita / Variável / Fixa / Pessoal
+  • subcategoria (TEXT) → Conforme categoria
+  • valor (REAL) → > 0
+  • banco (TEXT)
+  • nota_fiscal (TEXT) → Obrigatório para Receita e Variável
+  • empresa (TEXT) → Obrigatório para Receita e Variável
+  • observacao (TEXT)
+  • criado_em (TIMESTAMP)
+
+
+🛠️ TECNOLOGIAS
+════════════════════════════════════════════════════════════════════════
+
+Linguagem:    Python 3.8+
+Interface:    Tkinter + ttkbootstrap (tema darkly)
+Banco:        SQLite
+Gráficos:     Matplotlib
+Dados:        Pandas
+Excel:        Openpyxl
+
+
+📚 DOCUMENTAÇÃO
+════════════════════════════════════════════════════════════════════════
+
+ARQUIVO                   DESCRIÇÃO
+─────────────────────────────────────────────────────────────────────
+README.md                 Visão geral e funcionalidades
+GUIA_RAPIDO.md           Como usar em 2 minutos
+INSTALACAO.md            Passo-a-passo de instalação
+DOCUMENTACAO.md          Arquitetura técnica detalhada
+EXEMPLOS_USO.py          10 exemplos de código
+ENTREGA.md               Resumo da entrega
+
+
+🎯 PRÓXIMOS PASSOS
+════════════════════════════════════════════════════════════════════════
+
+1️⃣  Leia README.md (5 min)
+2️⃣  Instale seguindo INSTALACAO.md (3 min)
+3️⃣  Execute com dados de teste:
+    python inserir_dados_teste.py
+    python main.py
+4️⃣  Explore a interface (10 min)
+5️⃣  Consulte DOCUMENTACAO.md se quiser entender o código
+
+
+💻 REQUISITOS DO SISTEMA
+════════════════════════════════════════════════════════════════════════
+
+Mínimo:
+  • Python 3.8
+  • 100 MB disco
+  • 2 GB RAM
+
+Recomendado:
+  • Python 3.10+
+  • 200 MB disco
+  • 4 GB RAM
+
+
+🔍 VERIFICAÇÃO FINAL
+════════════════════════════════════════════════════════════════════════
+
+✅ Banco de dados SQLite
+✅ Modelo de dados com validações
+✅ Interface Tkinter moderna
+✅ 2 telas principais (Lançamentos + Relatórios)
+✅ Gráficos com matplotlib
+✅ Exportação Excel/CSV
+✅ Menu com opções
+✅ Código modular e limpo
+✅ Documentação completa
+✅ Exemplos de uso
+✅ Script de teste
+✅ Controle de versão (.gitignore)
+
+
+📞 SUPORTE
+════════════════════════════════════════════════════════════════════════
+
+Problema com instalação?
+  → Veja INSTALACAO.md → Solução de Problemas
+
+Quer entender o código?
+  → Leia DOCUMENTACAO.md
+
+Quer exemplos práticos?
+  → Estude EXEMPLOS_USO.py
+
+Banco de dados corrompido?
+  → Delete fluxo_caixa.db e reinicie
+
+
+🎉 PRONTO PARA USAR!
+════════════════════════════════════════════════════════════════════════
+
+   Desenvolvido com ❤️ em Python
+   Versão 1.0 - Janeiro 2026
+   MVP (Mínimo Produto Viável)
+   Pronto para produção
+
+   Boa sorte! 🚀
+
+
+════════════════════════════════════════════════════════════════════════
+Localização: d:\2026\fluxo_caixa\
+════════════════════════════════════════════════════════════════════════
